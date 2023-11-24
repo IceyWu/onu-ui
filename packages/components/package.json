@@ -1,30 +1,49 @@
 {
   "name": "@onu-ui/components",
-  "version": "1.0.5",
-  "description": "all components are settled here",
-  "main": "./dist/components.umd.js",
-  "module": "./dist/components.mjs",
+  "type": "module",
+  "version": "1.0.14-beta.2",
+  "description": "Onu-UI components for use on demand",
+  "author": "Chris <https://github.com/zyyv>",
+  "license": "MIT",
+  "homepage": "https://github.com/onu-ui/onu-ui/blob/main/packages/components/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onu-ui/onu-ui.git",
+    "directory": "packages/components"
+  },
+  "bugs": {
+    "url": "https://github.com/onu-ui/onu-ui/issues"
+  },
+  "keywords": [
+    "onu-ui",
+    "@onu-ui/components"
+  ],
+  "sideEffects": false,
   "exports": {
     ".": {
-      "import": "./dist/components.mjs",
-      "require": "./dist/components.umd.js"
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components.js",
+      "require": "./dist/components.umd.cjs"
     },
     "./dist/style.css": "./dist/style.css"
   },
+  "main": "./dist/components.umd.cjs",
+  "module": "./dist/components.js",
+  "types": "./dist/components/index.d.ts",
   "files": [
     "dist"
   ],
-  "sideEffects": false,
   "scripts": {
-    "build": "vite build",
-    "stub": "vite build --watch"
-  },
-  "peerDependencies": {
-    "vue": "^3.2.0"
+    "build": "vue-tsc --declaration --emitDeclarationOnly --skipLibCheck && vite build && pnpm run --filter \"../onu-ui\" build",
+    "stub": "vue-tsc --declaration --emitDeclarationOnly --skipLibCheck && vite build --watch"
   },
   "dependencies": {
     "@onu-ui/preset": "workspace:*",
-    "@onu-ui/utils": "workspace:*"
+    "@onu-ui/utils": "workspace:*",
+    "@vueuse/core": "^9.13.0"
+  },
+  "devDependencies": {
+    "resize-observer-polyfill": "^1.5.1"
   },
   "publishConfig": {
     "access": "public"

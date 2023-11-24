@@ -1,9 +1,15 @@
 import { createApp } from 'vue'
-import Onu from 'onu-ui'
+import onuUI from 'onu-ui'
 import App from './App.vue'
+import '@vue/repl/dist/style.css'
 import '@unocss/reset/tailwind.css'
-import './main.css'
 import 'onu-ui/dist/style.css'
 import 'uno.css'
 
-createApp(App).use(Onu).mount('#app')
+// @ts-expect-error Custom window property
+window.VUE_DEVTOOLS_CONFIG = {
+  defaultSelectedAppId: 'repl',
+}
+
+const app = createApp(App).use(onuUI)
+app.mount('#play_ground')

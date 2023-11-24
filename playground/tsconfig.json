@@ -1,6 +1,12 @@
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "jsx": "preserve"
-  }
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "types": ["../volar"]
+  },
+  "exclude": ["**/dist/**"],
+  "include": ["**/*.ts", "**/*.d.ts", "**/*.vue"]
 }
